@@ -1,14 +1,14 @@
 import React, { useContext } from "react";
 import { AppContext } from "../Context/Context";
-import style from "./style.module.scss";
+import styles from "./style.module.scss";
 
-interface PaginationProps {}
-
-const Pagination: React.FC<PaginationProps> = () => {
+const Pagination = () => {
   const { currentPage, setCurrentPage, searchCount } = useContext(AppContext);
   const itemsPerPage = 10;
-  const totalPages = Math.ceil(searchCount / itemsPerPage);
-
+  const totalPages = searchCount ? Math.ceil(searchCount / itemsPerPage) : 0;
+  if (!totalPages) {
+    return null;
+  }
   const handlePageChange = (pageNumber: number) => {
     if (pageNumber >= 1 && pageNumber <= totalPages) {
       setCurrentPage(pageNumber);
@@ -26,7 +26,9 @@ const Pagination: React.FC<PaginationProps> = () => {
         <button
           key={i}
           onClick={() => handlePageChange(i)}
-          className={`${i === currentPage ? style.active : ""} ${style.hover}`}
+          className={`${i === currentPage ? styles.active : ""} ${
+            styles.hover
+          }`}
         >
           {i}
         </button>
@@ -36,38 +38,49 @@ const Pagination: React.FC<PaginationProps> = () => {
     return pages;
   };
 
-  const renderEllipsis = () => {
-    if (currentPage > 1 && currentPage < totalPages) {
-      return <span className={style.ellipsis}></span>;
+  const renderStartRange = () => {
+    if (currentPage > 3) {
+      return (
+        <>
+          <button onClick={() => handlePageChange(1)}>1</button>
+          <button className={styles.ellipsis}>...</button>
+        </>
+      );
+    }
+    return null;
+  };
+
+  const renderEndRange = () => {
+    if (currentPage < totalPages - 2) {
+      return (
+        <>
+          <button className={styles.ellipsis}>...</button>
+          <button onClick={() => handlePageChange(totalPages)}>
+            {totalPages}
+          </button>
+        </>
+      );
     }
     return null;
   };
 
   return (
-    <div className={style.pagination}>
-      {totalPages ? (
-        <>
-          <>
-            <button
-              onClick={() => handlePageChange(currentPage - 1)}
-              disabled={currentPage === 1}
-            >
-              <span>{"<"}</span>
-            </button>
-            {renderPageNumbers()}
-            <button onClick={() => renderEllipsis()}>...</button>
-            <button onClick={() => handlePageChange(totalPages)}>
-              <span>{totalPages}</span>
-            </button>
-          </>
-          <button
-            onClick={() => handlePageChange(currentPage + 1)}
-            disabled={currentPage === totalPages}
-          >
-            <span>{">"}</span>
-          </button>
-        </>
-      ) : null}
+    <div className={styles.pagination}>
+      <button
+        onClick={() => handlePageChange(currentPage - 1)}
+        disabled={currentPage === 1}
+      >
+        <span>{"<"}</span>
+      </button>
+      {renderStartRange()}
+      {renderPageNumbers()}
+      {renderEndRange()}
+      <button
+        onClick={() => handlePageChange(currentPage + 1)}
+        disabled={currentPage === totalPages}
+      >
+        <span>{">"}</span>
+      </button>
     </div>
   );
 };

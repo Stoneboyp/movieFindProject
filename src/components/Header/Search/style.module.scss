@@ -9,5 +9,12 @@
     border-radius: 5px;
     padding: 15px 10px;
     box-sizing: border-box;
+    transition: all 0.3s ease;
+    &__notValue {
+      position: fixed;
+      top: 50%;
+      left: 42%;
+      transform: translateY(50%);
+    }
   }
 }

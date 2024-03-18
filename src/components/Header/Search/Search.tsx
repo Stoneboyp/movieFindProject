@@ -6,7 +6,7 @@ import { AppContext } from "../../Context/Context";
 const Search = () => {
   const timeOutRef = useRef<number | null>(null);
 
-  const { setSearchValue } = useContext(AppContext);
+  const { searchValue, setSearchValue } = useContext(AppContext);
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     if (timeOutRef.current) {
       clearTimeout(timeOutRef.current);
@@ -19,9 +19,11 @@ const Search = () => {
   return (
     <div className={styles.search}>
       <input
-        className={styles.search__form}
+        className={`${styles.search__form} ${
+          !searchValue && styles.search__form__notValue
+        }`}
         type="text"
-        placeholder="text to me"
+        placeholder="Find movie"
         onChange={handleInputChange}
         style={{
           backgroundImage: `url(${search})`,
