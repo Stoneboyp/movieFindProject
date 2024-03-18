@@ -1,0 +1,17 @@
+.searchInfo {
+  display: flex;
+  align-items: center;
+  &__value {
+    padding-right: 15px;
+    span {
+      text-decoration: underline;
+    }
+  }
+  &__count {
+    width: 20%;
+    color: #ffff;
+    border: 1px solid #6627ff;
+    border-radius: 5px;
+    background-color: #6627ff;
+  }
+}

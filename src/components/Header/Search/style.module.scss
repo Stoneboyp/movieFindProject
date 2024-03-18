@@ -1,0 +1,13 @@
+.search {
+  width: 100%;
+  &__form {
+    width: 100%;
+    max-width: 280px;
+    height: 40px;
+    background-color: #fcfcff;
+    border: 1px solid #e6eaf5;
+    border-radius: 5px;
+    padding: 15px 10px;
+    box-sizing: border-box;
+  }
+}

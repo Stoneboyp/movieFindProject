@@ -1,0 +1,21 @@
+.movie {
+  display: flex;
+  flex-direction: column;
+  width: 25%;
+  padding: 50px;
+  box-sizing: border-box;
+  &__poster {
+    &__img {
+      border: 1px solid #6627ff;
+      border-radius: 10px;
+      min-width: 245px;
+      max-height: 270px;
+    }
+  }
+}
+.info {
+  padding: 23px 13px;
+  text-align: left;
+  &__name {
+  }
+}

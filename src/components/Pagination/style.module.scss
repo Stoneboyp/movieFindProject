@@ -1,0 +1,24 @@
+.pagination {
+  margin: 0 auto;
+  width: 30%;
+  button {
+    background-color: #fcfcff;
+    border: 1px solid #e6eaf5;
+    width: 10%;
+    height: 27px;
+    &:first-child {
+      border-top-left-radius: 5px;
+      border-bottom-left-radius: 5px;
+    }
+    &:last-child {
+      border-top-right-radius: 5px;
+      border-bottom-right-radius: 5px;
+    }
+    &.active {
+      background-color: #f3f5f9;
+    }
+    &:hover {
+      background-color: #e6eaf5;
+    }
+  }
+}

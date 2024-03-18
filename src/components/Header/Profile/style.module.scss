@@ -1,0 +1,11 @@
+.profile {
+  display: flex;
+  justify-content: flex-end;
+
+  &__ic {
+  }
+  &__name {
+    white-space: nowrap;
+    padding-left: 9px;
+  }
+}

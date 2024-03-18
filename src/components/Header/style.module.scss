@@ -1,0 +1,21 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.logoContainer {
+  display: flex;
+  width: 33%;
+  &__logo {
+  }
+}
+.searchContainer {
+  width: 33%;
+}
+.profileContainer {
+  width: 33%;
+}
+.searchInfoContainer {
+  width: 35%;
+}
