@@ -1,12 +1,15 @@
 import React, { useContext } from "react";
-import { AppContext } from "../Context/Context";
+import { AppContext } from "../../Contexts/Context";
 import styles from "./style.module.scss";
 
+const itemsPerPage = 10;
+
 const Pagination = () => {
-  const { currentPage, setCurrentPage, searchCount } = useContext(AppContext);
-  const itemsPerPage = 10;
+  const { currentPage, setCurrentPage, searchCount, searchValue } =
+    useContext(AppContext);
   const totalPages = searchCount ? Math.ceil(searchCount / itemsPerPage) : 0;
-  if (!totalPages) {
+
+  if (!searchValue || totalPages < 2) {
     return null;
   }
   const handlePageChange = (pageNumber: number) => {

@@ -1,14 +1,8 @@
+import { MovieType } from "../../../types/movies";
 import style from "./style.module.scss";
 import placeholder from "/placeholder.jpg";
-interface MovieProps {
-  Poster: string;
-  Title: string;
-  Year: number;
-  imdbID: number;
-  Type: string;
-}
 
-const Movie = ({ movie }: { movie: MovieProps }) => {
+const Movie = ({ movie }: { movie: MovieType }) => {
   return (
     <div className={style.movie}>
       <div className={style.movie__poster}>

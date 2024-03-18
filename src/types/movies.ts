@@ -7,6 +7,6 @@ export interface MovieType {
 }
 export interface MoviesResponseType {
   Response: "True" | "False";
-  Search: MovieType[];
-  totalResults: number;
+  Search: MovieType[] | undefined;
+  totalResults: number | undefined;
 }

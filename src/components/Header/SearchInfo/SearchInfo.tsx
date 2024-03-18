@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { AppContext } from "../../Context/Context";
+import { AppContext } from "../../../Contexts/Context";
 import style from "./style.module.scss";
 
 const SearchInfo = () => {

@@ -1,21 +1,18 @@
-import { useContext, useRef } from "react";
+import { useContext, useEffect, useRef } from "react";
 import styles from "./style.module.scss";
 import search from "/search.svg";
-import { AppContext } from "../../Context/Context";
+import { AppContext } from "../../../Contexts/Context";
+import useDebounced from "../../../hooks/useDebounced";
 
 const Search = () => {
   const timeOutRef = useRef<number | null>(null);
 
-  const { searchValue, setSearchValue } = useContext(AppContext);
-  const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    if (timeOutRef.current) {
-      clearTimeout(timeOutRef.current);
-    }
-    timeOutRef.current = setTimeout(() => {
-      setSearchValue(event.target.value);
-    }, 300);
-  };
-
+  const { searchValue, setSearchValue, setCurrentPage } =
+    useContext(AppContext);
+  const handleInputChange = useDebounced();
+  useEffect(() => {
+    setCurrentPage(1);
+  }, [searchValue]);
   return (
     <div className={styles.search}>
       <input
