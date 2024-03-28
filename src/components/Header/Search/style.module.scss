@@ -1,20 +1,22 @@
 .search {
   width: 100%;
-  &__form {
-    width: 100%;
-    max-width: 280px;
-    height: 40px;
-    background-color: #fcfcff;
-    border: 1px solid #e6eaf5;
-    border-radius: 5px;
-    padding: 15px 10px;
-    box-sizing: border-box;
-    transition: all 0.3s ease;
-    &__notValue {
-      position: fixed;
-      top: 50%;
-      left: 42%;
-      transform: translateY(50%);
-    }
-  }
+}
+
+.search__form {
+  width: 100%;
+  max-width: 280px;
+  height: 40px;
+  background-color: #fcfcff;
+  border: 1px solid #e6eaf5;
+  border-radius: 5px;
+  padding: 15px 10px;
+  box-sizing: border-box;
+  transition: all 0.3s ease;
+}
+
+.search__form__notValue {
+  position: fixed;
+  top: 50%;
+  left: 42%;
+  transform: translateY(50%);
 }

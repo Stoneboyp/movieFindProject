@@ -5,14 +5,9 @@ import { AppContext } from "../../../Contexts/Context";
 import useDebounced from "../../../hooks/useDebounced";
 
 const Search = () => {
-  const timeOutRef = useRef<number | null>(null);
-
-  const { searchValue, setSearchValue, setCurrentPage } =
-    useContext(AppContext);
+  const { searchValue } = useContext(AppContext);
   const handleInputChange = useDebounced();
-  useEffect(() => {
-    setCurrentPage(1);
-  }, [searchValue]);
+
   return (
     <div className={styles.search}>
       <input

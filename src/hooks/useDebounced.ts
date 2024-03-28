@@ -1,4 +1,4 @@
-import { useContext, useEffect, useRef } from "react";
+import { useContext, useRef } from "react";
 import { AppContext } from "../Contexts/Context";
 
 const useDebounced = () => {
@@ -12,12 +12,9 @@ const useDebounced = () => {
     }
     timeOutRef.current = setTimeout(() => {
       setSearchValue(value);
+      setCurrentPage(1);
     }, 300);
   };
-
-  useEffect(() => {
-    setCurrentPage(1);
-  }, []);
 
   return handleInputChange;
 };
